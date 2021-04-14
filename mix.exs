@@ -37,6 +37,7 @@ defmodule UeberauthIntercom.Mixfile do
 
   defp package do
     [
+      name: :ueberauth_intercom,
       files: ["lib", "mix.exs", "README.md", "LICENSE"],
       maintainers: ["Statuspal AG"],
       licenses: ["MIT"],
