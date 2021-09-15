@@ -16,7 +16,8 @@ defmodule UeberauthIntercom.Mixfile do
       source_url: @url,
       homepage_url: @url,
       package: package(),
-      deps: deps()
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -31,7 +32,8 @@ defmodule UeberauthIntercom.Mixfile do
   defp deps do
     [
       {:oauth2, "~> 1.0 or ~> 2.0"},
-      {:ueberauth, "~> 0.6.3"}
+      {:ueberauth, "~> 0.6.3"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
@@ -39,9 +41,27 @@ defmodule UeberauthIntercom.Mixfile do
     [
       name: :ueberauth_intercom,
       files: ["lib", "mix.exs", "README.md", "LICENSE"],
-      maintainers: ["Statuspal AG"],
+      maintainers: ["E.M. Statuspal UG", "Nandor Stanko"],
       licenses: ["MIT"],
-      links: %{GitHub: @url}
+      links: %{
+        GitHub: @url,
+        Changelog: "#{@url}/blob/master/CHANGELOG.md",
+        Sponsor: "https://statuspal.io"
+      }
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      source_ref: "v#{@version}",
+      source_url: @url,
+      formatters: ["html"],
+      extras: [
+        "CHANGELOG.md",
+        "LICENSE": [title: "License"],
+        "README.md": [title: "Overview"]
+      ]
     ]
   end
 end
