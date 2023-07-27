@@ -10,7 +10,9 @@ defmodule Ueberauth.Strategy.Intercom do
 
   def handle_request!(conn) do
     opts =
-      if conn.params["state"], do: [state: conn.params["state"]], else: []
+      []
+      |> with_param(:state, conn)
+      |> with_param(:redirect_uri, conn)
 
     module = option(conn, :oauth2_module)
     redirect!(conn, apply(module, :authorize_url!, [opts]))
@@ -99,5 +101,9 @@ defmodule Ueberauth.Strategy.Intercom do
 
   defp option(conn, key) do
     Keyword.get(options(conn), key, Keyword.get(default_options(), key))
+  end
+
+  defp with_param(opts, key, conn) do
+    if value = conn.params[to_string(key)], do: Keyword.put(opts, key, value), else: opts
   end
 end
