@@ -1,7 +1,7 @@
 defmodule UeberauthIntercom.Mixfile do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
   @url "https://github.com/statuspal/ueberauth_intercom"
 
   def project do
@@ -31,8 +31,8 @@ defmodule UeberauthIntercom.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:oauth2, "~> 1.0 or ~> 2.0"},
-      {:ueberauth, "~> 0.6.3"},
+      {:oauth2, "~> 1.0 or ~> 2.1"},
+      {:ueberauth, "~> 0.10.5"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
